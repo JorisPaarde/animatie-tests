@@ -298,12 +298,12 @@
   const SW = 3;
   const LETTER_W = Math.min(20, innerWidth * 0.047);
   const PX = LETTER_W / VB_W;
-  const MAX_STRETCH = 4;
+  const MAX_STRETCH = 5.2;
 
-  const SU_BASE = 11 * PX;
-  const SL_BASE = 14 * PX;
+  const SU_BASE = 6.16 * PX;
+  const SL_BASE = 7.84 * PX;
   const B_FIXED = 8 + 9 + 8;        // 25
-  const B_STRETCH = 11 + 14;        // 25
+  const B_STRETCH = 6.16 + 7.84;    // 14
   const U_FIXED = 5;
   const H_FIXED = 3;
   const M_FIXED = 30;
@@ -342,8 +342,8 @@
 
   // ===== HUMOUR init =====
   letterH.style.width = LETTER_W + 'px';
-  hStrU.style.height = ((11 + 11) * PX) + 'px';
-  hStrL.style.height = ((11 + 14) * PX) + 'px';
+  hStrU.style.height = ((11 + 6.16) * PX) + 'px';
+  hStrL.style.height = ((11 + 7.84) * PX) + 'px';
 
   letterU2.style.width = LETTER_W + 'px';
   u2Str.style.height = ((B_FIXED + B_STRETCH - U_FIXED) * PX) + 'px';
@@ -364,15 +364,20 @@
     return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3) / 2;
   }
 
+  let currentP = 0;
+  const LERP_SPEED = 0.035;
+
   function update() {
     const total = document.documentElement.scrollHeight - innerHeight;
-    const p = Math.max(0, Math.min(1, scrollY / total));
+    const targetP = Math.max(0, Math.min(1, scrollY / total));
+    currentP += (targetP - currentP) * LERP_SPEED;
+    if (Math.abs(targetP - currentP) < 0.0005) currentP = targetP;
 
     let f;
-    if (p <= 0.5) {
-      f = 1 + ease(p * 2) * (MAX_STRETCH - 1);
+    if (currentP <= 0.5) {
+      f = 1 + ease(currentP * 2) * (MAX_STRETCH - 1);
     } else {
-      f = 1 + (1 - ease((p - 0.5) * 2)) * (MAX_STRETCH - 1);
+      f = 1 + (1 - ease((currentP - 0.5) * 2)) * (MAX_STRETCH - 1);
     }
 
     // ===== BUSINESS animate =====
@@ -411,12 +416,12 @@
     eSvg.setAttribute('viewBox', `0 0 ${VB_W} ${eH}`);
     eSvg.style.height = (eH * PX) + 'px';
     eV.setAttribute('height', eH);
-    eM.setAttribute('y', 8 + 11 * f + 3);
+    eM.setAttribute('y', 8 + 6.16 * f + 3);
     eB.setAttribute('y', eH - SW);
 
     // ===== HUMOUR animate =====
-    hStrU.style.height = ((11 + 11 * f) * PX) + 'px';
-    hStrL.style.height = ((11 + 14 * f) * PX) + 'px';
+    hStrU.style.height = ((11 + 6.16 * f) * PX) + 'px';
+    hStrL.style.height = ((11 + 7.84 * f) * PX) + 'px';
 
     u2Str.style.height = ((B_FIXED + B_STRETCH * f - U_FIXED) * PX) + 'px';
 
@@ -438,14 +443,11 @@
     val.textContent = f.toFixed(1) + '×';
   }
 
-  let ticking = false;
-  addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => { update(); ticking = false; });
-      ticking = true;
-    }
-  });
-  update();
+  function loop() {
+    update();
+    requestAnimationFrame(loop);
+  }
+  loop();
 </script>
 </body>
 </html>
