@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter B + U + S + N — Stretch on Scroll</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #faf8f5; font-family: system-ui, sans-serif; overflow-x: hidden; }
+    .scroll-area { height: 500vh; }
+    .sticky {
+      position: sticky; top: 0; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1.5rem;
+    }
+    .letters-row { display: flex; align-items: flex-end; gap: 0.5rem; }
+    .letter { display: flex; flex-direction: column; align-items: stretch; }
+    .letter-dynamic { display: block; flex-shrink: 0; }
+    .letter svg { display: block; width: 100%; flex-shrink: 0; }
+    .stretch { position: relative; flex-shrink: 0; }
+    .stretch .bar {
+      position: absolute; top: -0.5px; bottom: -0.5px; background: #d4a96a;
+    }
+    .info { text-align: center; color: #bbb; font-size: 0.8rem; font-weight: 300; }
+    .info .val {
+      display: block; font-variant-numeric: tabular-nums;
+      font-size: 1.6rem; color: #d4a96a; font-weight: 400; margin-bottom: 0.2rem;
+    }
+    .guide {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-size: 0.7rem; color: #ccc; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-area">
+  <div class="sticky">
+
+    <!--
+      W=15  SW=3  R=5(outer) r=2(inner, concentric)
+      Counter = 9 units (60% of width)
+      All strokes uniform 3 units.
+    -->
+
+    <div class="letters-row">
+
+      <!-- ===== LETTER B ===== -->
+      <div class="letter" id="letterB">
+
+        <!-- TOP (h=8): bar(3) + curve(5) -->
+        <svg viewBox="0 0 15 8">
+          <path d="M0,0 L10,0 Q15,0 15,5 L15,8 L12,8 L12,5 Q12,3 10,3 L3,3 L3,8 L0,8 Z" fill="#d4a96a"/>
+        </svg>
+
+        <!-- STRETCH upper: 2 bars, each 20% wide (3/15) -->
+        <div class="stretch" id="su">
+          <div class="bar" style="left:0; width:20%"></div>
+          <div class="bar" style="right:0; width:20%"></div>
+        </div>
+
+        <!-- MIDDLE (h=9): opening(3) + bar(3) + opening(3), curved inner corners -->
+        <svg viewBox="0 0 15 9">
+          <path d="
+            M0,0 L15,0 L15,9 L0,9 Z
+            M3,0 L12,0 L12,1 Q12,3 10,3 L3,3 Z
+            M3,6 L10,6 Q12,6 12,8 L12,9 L3,9 Z
+          " fill="#d4a96a" fill-rule="evenodd"/>
+        </svg>
+
+        <!-- STRETCH lower: 2 bars -->
+        <div class="stretch" id="sl">
+          <div class="bar" style="left:0; width:20%"></div>
+          <div class="bar" style="right:0; width:20%"></div>
+        </div>
+
+        <!-- BOTTOM (h=8): curve(5) + bar(3) -->
+        <svg viewBox="0 0 15 8">
+          <path d="M0,0 L0,8 L10,8 Q15,8 15,3 L15,0 L12,0 L12,3 Q12,5 10,5 L3,5 L3,0 Z" fill="#d4a96a"/>
+        </svg>
+
+      </div>
+
+      <!-- ===== LETTER U ===== -->
+      <div class="letter" id="letterU">
+
+        <!-- STRETCH: two stems -->
+        <div class="stretch" id="uStr">
+          <div class="bar" style="left:0; width:20%"></div>
+          <div class="bar" style="right:0; width:20%"></div>
+        </div>
+
+        <!-- BOTTOM (h=9): U-curve connecting both stems, concentric inner/outer -->
+        <svg viewBox="0 0 15 9">
+          <path d="M0,0 L0,2 Q0,9 7.5,9 Q15,9 15,2 L15,0 L12,0 L12,2 Q12,6 7.5,6 Q3,6 3,2 L3,0 Z" fill="#d4a96a"/>
+        </svg>
+
+      </div>
+
+      <!-- ===== LETTER S ===== -->
+      <div class="letter" id="letterS">
+
+        <!-- TOP (h=8): upper curve, opens right at bottom -->
+        <svg viewBox="0 0 15 8">
+          <path d="M0,8 L0,0 L10,0 Q15,0 15,5 L12,5 Q12,3 10,3 L3,3 L3,8 Z" fill="#d4a96a"/>
+        </svg>
+
+        <!-- STRETCH upper: left stem only -->
+        <div class="stretch" id="sSu">
+          <div class="bar" style="left:0; width:20%"></div>
+        </div>
+
+        <!-- MIDDLE (h=9): crossbar + curved transitions, evenodd cutouts -->
+        <svg viewBox="0 0 15 9">
+          <path d="
+            M0,0 L15,0 L15,9 L0,9 Z
+            M3,0 L3,1 Q3,3 5,3 L15,3 L15,0 Z
+            M0,6 L10,6 Q12,6 12,8 L12,9 L0,9 Z
+          " fill="#d4a96a" fill-rule="evenodd"/>
+        </svg>
+
+        <!-- STRETCH lower: right stem only -->
+        <div class="stretch" id="sSl">
+          <div class="bar" style="right:0; width:20%"></div>
+        </div>
+
+        <!-- BOTTOM (h=8): lower curve, opens left at top -->
+        <svg viewBox="0 0 15 8">
+          <path d="M15,0 L15,8 L5,8 Q0,8 0,3 L3,3 Q3,5 5,5 L12,5 L12,0 Z" fill="#d4a96a"/>
+        </svg>
+
+      </div>
+
+      <!-- ===== LETTER N ===== -->
+      <svg class="letter-dynamic" id="letterN" viewBox="0 0 15 75">
+        <rect id="nL" x="0"  y="0" width="3" height="75" fill="#d4a96a"/>
+        <rect id="nR" x="12" y="0" width="3" height="75" fill="#d4a96a"/>
+        <polygon id="nD" points="0,0 4,0 15,75 11,75" fill="#d4a96a"/>
+      </svg>
+
+    </div>
+
+    <div class="info">
+      <span class="val" id="val">1.0×</span>
+      scroll to stretch
+    </div>
+  </div>
+</div>
+
+<div class="guide">↕ scroll</div>
+
+<script>
+  const su = document.getElementById('su');
+  const sl = document.getElementById('sl');
+  const letterB = document.getElementById('letterB');
+  const letterU = document.getElementById('letterU');
+  const uStr = document.getElementById('uStr');
+  const letterS = document.getElementById('letterS');
+  const sSu = document.getElementById('sSu');
+  const sSl = document.getElementById('sSl');
+  const nSvg = document.getElementById('letterN');
+  const nL = document.getElementById('nL');
+  const nR = document.getElementById('nR');
+  const nD = document.getElementById('nD');
+  const val = document.getElementById('val');
+
+  const VB_W = 15;
+  const SW = 3;
+  const LETTER_W = Math.min(30, innerWidth * 0.07);
+  const PX = LETTER_W / VB_W;
+  const MAX_STRETCH = 4;
+
+  letterB.style.width = LETTER_W + 'px';
+
+  const SU_BASE = 11 * PX;
+  const SL_BASE = 14 * PX;
+  su.style.height = SU_BASE + 'px';
+  sl.style.height = SL_BASE + 'px';
+
+  const B_FIXED = 8 + 9 + 8;         // TOP + MID + BOT = 25
+  const B_STRETCH = 11 + 14;         // SU + SL base = 25
+
+  const U_FIXED = 9;                 // bottom curve
+
+  letterU.style.width = LETTER_W + 'px';
+  uStr.style.height = ((B_FIXED + B_STRETCH - U_FIXED) * PX) + 'px';
+
+  letterS.style.width = LETTER_W + 'px';
+  sSu.style.height = SU_BASE + 'px';
+  sSl.style.height = SL_BASE + 'px';
+
+  nSvg.style.width = LETTER_W + 'px';
+  nSvg.style.height = ((B_FIXED + B_STRETCH) * PX) + 'px';
+
+  function ease(t) {
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3) / 2;
+  }
+
+  function update() {
+    const total = document.documentElement.scrollHeight - innerHeight;
+    const p = Math.max(0, Math.min(1, scrollY / total));
+
+    let f;
+    if (p <= 0.5) {
+      f = 1 + ease(p * 2) * (MAX_STRETCH - 1);
+    } else {
+      f = 1 + (1 - ease((p - 0.5) * 2)) * (MAX_STRETCH - 1);
+    }
+
+    su.style.height = (SU_BASE * f) + 'px';
+    sl.style.height = (SL_BASE * f) + 'px';
+
+    uStr.style.height = ((B_FIXED + B_STRETCH * f - U_FIXED) * PX) + 'px';
+
+    sSu.style.height = (SU_BASE * f) + 'px';
+    sSl.style.height = (SL_BASE * f) + 'px';
+
+    const nH = B_FIXED + B_STRETCH * f;
+    nSvg.setAttribute('viewBox', `0 0 ${VB_W} ${nH}`);
+    nSvg.style.height = (nH * PX) + 'px';
+    nL.setAttribute('height', nH);
+    nR.setAttribute('height', nH);
+
+    const diagW = SW / Math.cos(Math.atan2(VB_W - SW * 2, nH));
+    const dw = Math.min(SW + 1, Math.max(SW, diagW));
+    const half = dw / 2;
+    const cL = SW / 2;
+    const cR = VB_W - SW / 2;
+    nD.setAttribute('points',
+      `${cL-half},0 ${cL+half},0 ${cR+half},${nH} ${cR-half},${nH}`
+    );
+
+    val.textContent = f.toFixed(1) + '×';
+  }
+
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { update(); ticking = false; });
+      ticking = true;
+    }
+  });
+  update();
+</script>
+</body>
+</html>
