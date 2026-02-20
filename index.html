@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Letter B + U + S + N — Stretch on Scroll</title>
+  <title>BUSINESS OF HUMOUR — Stretch on Scroll</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #faf8f5; font-family: system-ui, sans-serif; overflow-x: hidden; }
@@ -13,6 +13,7 @@
       display: flex; align-items: center; justify-content: center;
       flex-direction: column; gap: 1.5rem;
     }
+    .words { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
     .letters-row { display: flex; align-items: flex-end; gap: 0.5rem; }
     .letter { display: flex; flex-direction: column; align-items: stretch; }
     .letter-dynamic { display: block; flex-shrink: 0; }
@@ -38,105 +39,203 @@
   <div class="sticky">
 
     <!--
-      W=15  SW=3  R=5(outer) r=2(inner, concentric)
-      Counter = 9 units (60% of width)
+      W=10  SW=3  R=5(outer) r=2(inner, concentric)
+      Curves meet at x=5, no horizontal bars.
       All strokes uniform 3 units.
     -->
 
-    <div class="letters-row">
+    <div class="words">
 
-      <!-- ===== LETTER B ===== -->
-      <div class="letter" id="letterB">
+      <!-- ==================== BUSINESS ==================== -->
+      <div class="letters-row">
 
-        <!-- TOP (h=8): bar(3) + curve(5) -->
-        <svg viewBox="0 0 15 8">
-          <path d="M0,0 L10,0 Q15,0 15,5 L15,8 L12,8 L12,5 Q12,3 10,3 L3,3 L3,8 L0,8 Z" fill="#d4a96a"/>
-        </svg>
-
-        <!-- STRETCH upper: 2 bars, each 20% wide (3/15) -->
-        <div class="stretch" id="su">
-          <div class="bar" style="left:0; width:20%"></div>
-          <div class="bar" style="right:0; width:20%"></div>
+        <!-- ===== LETTER B ===== -->
+        <div class="letter" id="letterB">
+          <svg viewBox="0 0 10 8">
+            <path d="M0,0 L5,0 Q10,0 10,5 L10,8 L7,8 L7,5 Q7,3 5,3 L3,3 L3,8 L0,8 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="su">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 9">
+            <path d="
+              M0,0 L10,0 L10,3 Q9,4.5 10,6 L10,9 L0,9 Z
+              M3,0 L7,0 L7,1 Q7,3 5,3 L3,3 Z
+              M3,6 L5,6 Q7,6 7,8 L7,9 L3,9 Z
+            " fill="#d4a96a" fill-rule="evenodd"/>
+          </svg>
+          <div class="stretch" id="sl">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 8">
+            <path d="M0,0 L0,8 L5,8 Q10,8 10,3 L10,0 L7,0 L7,3 Q7,5 5,5 L3,5 L3,0 Z" fill="#d4a96a"/>
+          </svg>
         </div>
 
-        <!-- MIDDLE (h=9): opening(3) + bar(3) + opening(3), curved inner corners -->
-        <svg viewBox="0 0 15 9">
-          <path d="
-            M0,0 L15,0 L15,9 L0,9 Z
-            M3,0 L12,0 L12,1 Q12,3 10,3 L3,3 Z
-            M3,6 L10,6 Q12,6 12,8 L12,9 L3,9 Z
-          " fill="#d4a96a" fill-rule="evenodd"/>
-        </svg>
-
-        <!-- STRETCH lower: 2 bars -->
-        <div class="stretch" id="sl">
-          <div class="bar" style="left:0; width:20%"></div>
-          <div class="bar" style="right:0; width:20%"></div>
+        <!-- ===== LETTER U ===== -->
+        <div class="letter" id="letterU">
+          <div class="stretch" id="uStr">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 5">
+            <path d="M0,0 Q0,5 5,5 Q10,5 10,0 L7,0 Q7,2 5,2 Q3,2 3,0 Z" fill="#d4a96a"/>
+          </svg>
         </div>
 
-        <!-- BOTTOM (h=8): curve(5) + bar(3) -->
-        <svg viewBox="0 0 15 8">
-          <path d="M0,0 L0,8 L10,8 Q15,8 15,3 L15,0 L12,0 L12,3 Q12,5 10,5 L3,5 L3,0 Z" fill="#d4a96a"/>
+        <!-- ===== LETTER S ===== -->
+        <div class="letter" id="letterS">
+          <svg viewBox="0 0 10 8">
+            <path d="M0,8 L0,5 Q0,0 5,0 Q10,0 10,5 L7,5 Q7,3 5,3 Q3,3 3,5 L3,8 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="sSu">
+            <div class="bar" style="left:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 9">
+            <path d="M0,0 L0,6 L7,6 L7,9 L10,9 L10,3 L3,3 L3,0 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="sSl">
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 8">
+            <path d="M10,0 L10,3 Q10,8 5,8 Q0,8 0,3 L3,3 Q3,5 5,5 Q7,5 7,3 L7,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
+
+        <!-- ===== LETTER I ===== -->
+        <div class="letter" id="letterI">
+          <svg viewBox="0 0 3 8"><rect x="0" y="0" width="3" height="8" fill="#d4a96a"/></svg>
+          <div class="stretch" id="iSu"><div class="bar" style="left:0; width:100%"></div></div>
+          <svg viewBox="0 0 3 9"><rect x="0" y="0" width="3" height="9" fill="#d4a96a"/></svg>
+          <div class="stretch" id="iSl"><div class="bar" style="left:0; width:100%"></div></div>
+          <svg viewBox="0 0 3 8"><rect x="0" y="0" width="3" height="8" fill="#d4a96a"/></svg>
+        </div>
+
+        <!-- ===== LETTER N ===== -->
+        <svg class="letter-dynamic" id="letterN" viewBox="0 0 10 50">
+          <rect id="nL" x="0" y="0" width="3" height="50" fill="#d4a96a"/>
+          <rect id="nR" x="7" y="0" width="3" height="50" fill="#d4a96a"/>
+          <polygon id="nD" points="0,0 4,0 10,50 6,50" fill="#d4a96a"/>
         </svg>
+
+        <!-- ===== LETTER E ===== -->
+        <svg class="letter-dynamic" id="letterE" viewBox="0 0 10 50">
+          <rect id="eV" x="0" y="0" width="3" height="50" fill="#d4a96a"/>
+          <rect x="0" y="0" width="10" height="3" fill="#d4a96a"/>
+          <rect id="eM" x="0" y="23.5" width="7" height="3" fill="#d4a96a"/>
+          <rect id="eB" x="0" y="47" width="10" height="3" fill="#d4a96a"/>
+        </svg>
+
+        <!-- ===== LETTER S2 ===== -->
+        <div class="letter" id="letterS2">
+          <svg viewBox="0 0 10 8">
+            <path d="M0,8 L0,5 Q0,0 5,0 Q10,0 10,5 L7,5 Q7,3 5,3 Q3,3 3,5 L3,8 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="s2Su"><div class="bar" style="left:0; width:30%"></div></div>
+          <svg viewBox="0 0 10 9">
+            <path d="M0,0 L0,6 L7,6 L7,9 L10,9 L10,3 L3,3 L3,0 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="s2Sl"><div class="bar" style="right:0; width:30%"></div></div>
+          <svg viewBox="0 0 10 8">
+            <path d="M10,0 L10,3 Q10,8 5,8 Q0,8 0,3 L3,3 Q3,5 5,5 Q7,5 7,3 L7,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
+
+        <!-- ===== LETTER S3 ===== -->
+        <div class="letter" id="letterS3">
+          <svg viewBox="0 0 10 8">
+            <path d="M0,8 L0,5 Q0,0 5,0 Q10,0 10,5 L7,5 Q7,3 5,3 Q3,3 3,5 L3,8 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="s3Su"><div class="bar" style="left:0; width:30%"></div></div>
+          <svg viewBox="0 0 10 9">
+            <path d="M0,0 L0,6 L7,6 L7,9 L10,9 L10,3 L3,3 L3,0 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="s3Sl"><div class="bar" style="right:0; width:30%"></div></div>
+          <svg viewBox="0 0 10 8">
+            <path d="M10,0 L10,3 Q10,8 5,8 Q0,8 0,3 L3,3 Q3,5 5,5 Q7,5 7,3 L7,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
 
       </div>
 
-      <!-- ===== LETTER U ===== -->
-      <div class="letter" id="letterU">
+      <!-- ==================== HUMOUR ==================== -->
+      <div class="letters-row">
 
-        <!-- STRETCH: two stems -->
-        <div class="stretch" id="uStr">
-          <div class="bar" style="left:0; width:20%"></div>
-          <div class="bar" style="right:0; width:20%"></div>
+        <!-- ===== LETTER H ===== -->
+        <div class="letter" id="letterH">
+          <div class="stretch" id="hStrU">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 3">
+            <rect x="0" y="0" width="10" height="3" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="hStrL">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
         </div>
 
-        <!-- BOTTOM (h=9): U-curve connecting both stems, concentric inner/outer -->
-        <svg viewBox="0 0 15 9">
-          <path d="M0,0 L0,2 Q0,9 7.5,9 Q15,9 15,2 L15,0 L12,0 L12,2 Q12,6 7.5,6 Q3,6 3,2 L3,0 Z" fill="#d4a96a"/>
+        <!-- ===== LETTER U2 ===== -->
+        <div class="letter" id="letterU2">
+          <div class="stretch" id="u2Str">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 5">
+            <path d="M0,0 Q0,5 5,5 Q10,5 10,0 L7,0 Q7,2 5,2 Q3,2 3,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
+
+        <!-- ===== LETTER M ===== -->
+        <div class="letter" id="letterM">
+          <svg viewBox="0 0 10 30">
+            <rect x="0" y="0" width="3" height="30" fill="#d4a96a"/>
+            <rect x="7" y="0" width="3" height="30" fill="#d4a96a"/>
+            <line x1="1.5" y1="0" x2="5" y2="24" stroke="#d4a96a" stroke-width="3"/>
+            <line x1="8.5" y1="0" x2="5" y2="24" stroke="#d4a96a" stroke-width="3"/>
+          </svg>
+          <div class="stretch" id="mStr">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+        </div>
+
+        <!-- ===== LETTER O ===== -->
+        <div class="letter" id="letterO">
+          <svg viewBox="0 0 10 5">
+            <path d="M0,5 Q0,0 5,0 Q10,0 10,5 L7,5 Q7,3 5,3 Q3,3 3,5 Z" fill="#d4a96a"/>
+          </svg>
+          <div class="stretch" id="oStr">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 5">
+            <path d="M0,0 Q0,5 5,5 Q10,5 10,0 L7,0 Q7,2 5,2 Q3,2 3,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
+
+        <!-- ===== LETTER U3 ===== -->
+        <div class="letter" id="letterU3">
+          <div class="stretch" id="u3Str">
+            <div class="bar" style="left:0; width:30%"></div>
+            <div class="bar" style="right:0; width:30%"></div>
+          </div>
+          <svg viewBox="0 0 10 5">
+            <path d="M0,0 Q0,5 5,5 Q10,5 10,0 L7,0 Q7,2 5,2 Q3,2 3,0 Z" fill="#d4a96a"/>
+          </svg>
+        </div>
+
+        <!-- ===== LETTER R (dynamic SVG) ===== -->
+        <svg class="letter-dynamic" id="letterR" viewBox="0 0 10 50">
+          <rect id="rStem" x="0" y="0" width="3" height="50" fill="#d4a96a"/>
+          <path d="M3,0 L5,0 Q10,0 10,8 Q10,16 5,16 L3,16 L3,13 L5,13 Q7,13 7,8 Q7,3 5,3 L3,3 Z" fill="#d4a96a"/>
+          <polygon id="rLeg" points="3,13 6,13 10,50 7,50" fill="#d4a96a"/>
         </svg>
 
       </div>
-
-      <!-- ===== LETTER S ===== -->
-      <div class="letter" id="letterS">
-
-        <!-- TOP (h=8): upper curve, opens right at bottom -->
-        <svg viewBox="0 0 15 8">
-          <path d="M0,8 L0,0 L10,0 Q15,0 15,5 L12,5 Q12,3 10,3 L3,3 L3,8 Z" fill="#d4a96a"/>
-        </svg>
-
-        <!-- STRETCH upper: left stem only -->
-        <div class="stretch" id="sSu">
-          <div class="bar" style="left:0; width:20%"></div>
-        </div>
-
-        <!-- MIDDLE (h=9): crossbar + curved transitions, evenodd cutouts -->
-        <svg viewBox="0 0 15 9">
-          <path d="
-            M0,0 L15,0 L15,9 L0,9 Z
-            M3,0 L3,1 Q3,3 5,3 L15,3 L15,0 Z
-            M0,6 L10,6 Q12,6 12,8 L12,9 L0,9 Z
-          " fill="#d4a96a" fill-rule="evenodd"/>
-        </svg>
-
-        <!-- STRETCH lower: right stem only -->
-        <div class="stretch" id="sSl">
-          <div class="bar" style="right:0; width:20%"></div>
-        </div>
-
-        <!-- BOTTOM (h=8): lower curve, opens left at top -->
-        <svg viewBox="0 0 15 8">
-          <path d="M15,0 L15,8 L5,8 Q0,8 0,3 L3,3 Q3,5 5,5 L12,5 L12,0 Z" fill="#d4a96a"/>
-        </svg>
-
-      </div>
-
-      <!-- ===== LETTER N ===== -->
-      <svg class="letter-dynamic" id="letterN" viewBox="0 0 15 75">
-        <rect id="nL" x="0"  y="0" width="3" height="75" fill="#d4a96a"/>
-        <rect id="nR" x="12" y="0" width="3" height="75" fill="#d4a96a"/>
-        <polygon id="nD" points="0,0 4,0 15,75 11,75" fill="#d4a96a"/>
-      </svg>
 
     </div>
 
@@ -150,6 +249,7 @@
 <div class="guide">↕ scroll</div>
 
 <script>
+  // ===== BUSINESS refs =====
   const su = document.getElementById('su');
   const sl = document.getElementById('sl');
   const letterB = document.getElementById('letterB');
@@ -158,29 +258,62 @@
   const letterS = document.getElementById('letterS');
   const sSu = document.getElementById('sSu');
   const sSl = document.getElementById('sSl');
+  const letterI = document.getElementById('letterI');
+  const iSu = document.getElementById('iSu');
+  const iSl = document.getElementById('iSl');
+  const s2Su = document.getElementById('s2Su');
+  const s2Sl = document.getElementById('s2Sl');
+  const letterS2 = document.getElementById('letterS2');
+  const s3Su = document.getElementById('s3Su');
+  const s3Sl = document.getElementById('s3Sl');
+  const letterS3 = document.getElementById('letterS3');
   const nSvg = document.getElementById('letterN');
   const nL = document.getElementById('nL');
   const nR = document.getElementById('nR');
   const nD = document.getElementById('nD');
+  const eSvg = document.getElementById('letterE');
+  const eV = document.getElementById('eV');
+  const eM = document.getElementById('eM');
+  const eB = document.getElementById('eB');
+
+  // ===== HUMOUR refs =====
+  const letterH = document.getElementById('letterH');
+  const hStrU = document.getElementById('hStrU');
+  const hStrL = document.getElementById('hStrL');
+  const letterU2 = document.getElementById('letterU2');
+  const u2Str = document.getElementById('u2Str');
+  const letterM = document.getElementById('letterM');
+  const mStr = document.getElementById('mStr');
+  const letterO = document.getElementById('letterO');
+  const oStr = document.getElementById('oStr');
+  const letterU3 = document.getElementById('letterU3');
+  const u3Str = document.getElementById('u3Str');
+  const rSvg = document.getElementById('letterR');
+  const rStem = document.getElementById('rStem');
+  const rLeg = document.getElementById('rLeg');
+
   const val = document.getElementById('val');
 
-  const VB_W = 15;
+  const VB_W = 10;
   const SW = 3;
-  const LETTER_W = Math.min(30, innerWidth * 0.07);
+  const LETTER_W = Math.min(20, innerWidth * 0.047);
   const PX = LETTER_W / VB_W;
   const MAX_STRETCH = 4;
 
-  letterB.style.width = LETTER_W + 'px';
-
   const SU_BASE = 11 * PX;
   const SL_BASE = 14 * PX;
+  const B_FIXED = 8 + 9 + 8;        // 25
+  const B_STRETCH = 11 + 14;        // 25
+  const U_FIXED = 5;
+  const H_FIXED = 3;
+  const M_FIXED = 30;
+  const O_FIXED = 5 + 5;            // 10
+  const R_FIXED = 16;
+
+  // ===== BUSINESS init =====
+  letterB.style.width = LETTER_W + 'px';
   su.style.height = SU_BASE + 'px';
   sl.style.height = SL_BASE + 'px';
-
-  const B_FIXED = 8 + 9 + 8;         // TOP + MID + BOT = 25
-  const B_STRETCH = 11 + 14;         // SU + SL base = 25
-
-  const U_FIXED = 9;                 // bottom curve
 
   letterU.style.width = LETTER_W + 'px';
   uStr.style.height = ((B_FIXED + B_STRETCH - U_FIXED) * PX) + 'px';
@@ -189,8 +322,43 @@
   sSu.style.height = SU_BASE + 'px';
   sSl.style.height = SL_BASE + 'px';
 
+  letterI.style.width = (SW * PX) + 'px';
+  iSu.style.height = SU_BASE + 'px';
+  iSl.style.height = SL_BASE + 'px';
+
+  letterS2.style.width = LETTER_W + 'px';
+  s2Su.style.height = SU_BASE + 'px';
+  s2Sl.style.height = SL_BASE + 'px';
+
+  letterS3.style.width = LETTER_W + 'px';
+  s3Su.style.height = SU_BASE + 'px';
+  s3Sl.style.height = SL_BASE + 'px';
+
   nSvg.style.width = LETTER_W + 'px';
   nSvg.style.height = ((B_FIXED + B_STRETCH) * PX) + 'px';
+
+  eSvg.style.width = LETTER_W + 'px';
+  eSvg.style.height = ((B_FIXED + B_STRETCH) * PX) + 'px';
+
+  // ===== HUMOUR init =====
+  letterH.style.width = LETTER_W + 'px';
+  hStrU.style.height = ((11 + 11) * PX) + 'px';
+  hStrL.style.height = ((11 + 14) * PX) + 'px';
+
+  letterU2.style.width = LETTER_W + 'px';
+  u2Str.style.height = ((B_FIXED + B_STRETCH - U_FIXED) * PX) + 'px';
+
+  letterM.style.width = LETTER_W + 'px';
+  mStr.style.height = ((B_FIXED + B_STRETCH - M_FIXED) * PX) + 'px';
+
+  letterO.style.width = LETTER_W + 'px';
+  oStr.style.height = ((B_FIXED + B_STRETCH - O_FIXED) * PX) + 'px';
+
+  letterU3.style.width = LETTER_W + 'px';
+  u3Str.style.height = ((B_FIXED + B_STRETCH - U_FIXED) * PX) + 'px';
+
+  rSvg.style.width = LETTER_W + 'px';
+  rSvg.style.height = ((B_FIXED + B_STRETCH) * PX) + 'px';
 
   function ease(t) {
     return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3) / 2;
@@ -207,6 +375,7 @@
       f = 1 + (1 - ease((p - 0.5) * 2)) * (MAX_STRETCH - 1);
     }
 
+    // ===== BUSINESS animate =====
     su.style.height = (SU_BASE * f) + 'px';
     sl.style.height = (SL_BASE * f) + 'px';
 
@@ -215,12 +384,20 @@
     sSu.style.height = (SU_BASE * f) + 'px';
     sSl.style.height = (SL_BASE * f) + 'px';
 
+    iSu.style.height = (SU_BASE * f) + 'px';
+    iSl.style.height = (SL_BASE * f) + 'px';
+
+    s2Su.style.height = (SU_BASE * f) + 'px';
+    s2Sl.style.height = (SL_BASE * f) + 'px';
+
+    s3Su.style.height = (SU_BASE * f) + 'px';
+    s3Sl.style.height = (SL_BASE * f) + 'px';
+
     const nH = B_FIXED + B_STRETCH * f;
     nSvg.setAttribute('viewBox', `0 0 ${VB_W} ${nH}`);
     nSvg.style.height = (nH * PX) + 'px';
     nL.setAttribute('height', nH);
     nR.setAttribute('height', nH);
-
     const diagW = SW / Math.cos(Math.atan2(VB_W - SW * 2, nH));
     const dw = Math.min(SW + 1, Math.max(SW, diagW));
     const half = dw / 2;
@@ -228,6 +405,34 @@
     const cR = VB_W - SW / 2;
     nD.setAttribute('points',
       `${cL-half},0 ${cL+half},0 ${cR+half},${nH} ${cR-half},${nH}`
+    );
+
+    const eH = nH;
+    eSvg.setAttribute('viewBox', `0 0 ${VB_W} ${eH}`);
+    eSvg.style.height = (eH * PX) + 'px';
+    eV.setAttribute('height', eH);
+    eM.setAttribute('y', 8 + 11 * f + 3);
+    eB.setAttribute('y', eH - SW);
+
+    // ===== HUMOUR animate =====
+    hStrU.style.height = ((11 + 11 * f) * PX) + 'px';
+    hStrL.style.height = ((11 + 14 * f) * PX) + 'px';
+
+    u2Str.style.height = ((B_FIXED + B_STRETCH * f - U_FIXED) * PX) + 'px';
+
+    mStr.style.height = ((B_FIXED + B_STRETCH * f - M_FIXED) * PX) + 'px';
+
+    oStr.style.height = ((B_FIXED + B_STRETCH * f - O_FIXED) * PX) + 'px';
+
+    u3Str.style.height = ((B_FIXED + B_STRETCH * f - U_FIXED) * PX) + 'px';
+
+    const rH = B_FIXED + B_STRETCH * f;
+    rSvg.setAttribute('viewBox', `0 0 ${VB_W} ${rH}`);
+    rSvg.style.height = (rH * PX) + 'px';
+    rStem.setAttribute('height', rH);
+    const rLegStart = R_FIXED - SW;
+    rLeg.setAttribute('points',
+      `3,${rLegStart} 6,${rLegStart} ${VB_W},${rH} ${VB_W-SW},${rH}`
     );
 
     val.textContent = f.toFixed(1) + '×';
